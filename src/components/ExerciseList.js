@@ -7,15 +7,11 @@ const ExerciseList = ({exercises}) => (
                 return (
                     <Card
                         key={item.id}
-                        title={item.title}
-                        description={item.description}
-                        img={item.img}
-                        leftColor={item.leftColor}
-                        rightColor={item.rightColor}
+                        {...item}
                     />
                 )
             })}
-        </div>
+    </div>
 )
 
 export default ExerciseList

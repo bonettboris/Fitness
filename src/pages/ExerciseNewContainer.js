@@ -1,6 +1,7 @@
 import React from 'react'
 import FatalError from './500'
 import ExerciseNew from './ExerciseNew'
+import url from '../config'
 
 class ExercisesNewContainer extends React.Component{
 
@@ -45,7 +46,7 @@ class ExercisesNewContainer extends React.Component{
                 body: JSON.stringify(this.state.form)
             }
 
-            let res = await fetch('http://localhost:8000/api/exercises', config)
+            let res = await fetch(`${url}`, config)
             let json = await res.json()
             
             console.log(json);
@@ -65,10 +66,10 @@ class ExercisesNewContainer extends React.Component{
     }
 
     render(){
-        if(this.state.error)
-            return <FatalError />
+        const {error} = this.state
+        error && <FatalError /> 
 
-        return <ExerciseNew 
+        return <ExerciseNew
                 form={this.state.form}
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
